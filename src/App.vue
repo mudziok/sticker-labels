@@ -1,18 +1,30 @@
 <template>
   <div id="app">
     <h1>Sticker Creator</h1>
+    <Sticker />
   </div>
 </template>
 
 <script>
+import Sticker from '@/components/Sticker/Sticker.vue'
+
 export default {
   name: 'App',
+  components: {
+    Sticker
+  }
 }
 </script>
 
 <style>
+:root {
+  --background: #64dbd1;
+  --primary: #f0fffc;
+  --accent: #2f596d;
+}
+
 body {
-  background: #64dbd1;
+  background: var(--background);
 }
 
 #app {
@@ -21,8 +33,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   text-align: center;
-  color: rgb(240, 255, 252);
+  color: var(--primary);
   margin-top: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 h1 {
