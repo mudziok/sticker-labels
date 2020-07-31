@@ -4,7 +4,7 @@
 
     </div>
     <div id='text-container' class='both'>
-      
+      <TextInput />
     </div>
     <div id='shadow'>
       <div id='icon-container' class='both'></div>
@@ -14,8 +14,13 @@
 </template>
 
 <script>
+import TextInput from '@/components/Sticker/TextInput.vue'
+
 export default {
   name: 'Sticker',
+  components: {
+    TextInput
+  }
 }
 </script>
 
@@ -25,6 +30,7 @@ export default {
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  
 }
 
 #shadow {
@@ -33,7 +39,7 @@ export default {
   align-items: center;
 
   position: absolute;
-  transform: translate(0, 6px);
+  transform: translateY(6px);
   z-index: -1;
 }
 
