@@ -1,7 +1,7 @@
 <template>
   <div id='sticker'>
     <div id='icon-container' class='both'>
-      <Icon :name="'mouse'" style="font-size: 55px"/>
+      <Icon :name='this.$root.$children[0].selectedIcon' style='font-size: 55px' />
     </div>
     <div id='text-container' class='both'>
       <TextInput />
@@ -49,6 +49,10 @@ export default {
   width: 100px;  
   border-radius: 70px 0 0 70px; /* TL BL rounded*/
   padding-left: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #text-container {

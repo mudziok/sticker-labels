@@ -1,15 +1,13 @@
 <template>
-  <div id='container'>
-    <i :class='`flaticon-${name}`'></i>
-  </div>
+  <i :class='`flaticon-${name}`'></i>
 </template>
 
 <script>
 export default {
   name: 'Icon',
-  props: [
-    'name'
-  ]
+  props: {
+    name,
+  }
 }
 </script>
 

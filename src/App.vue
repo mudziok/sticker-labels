@@ -15,6 +15,16 @@ export default {
   components: {
     Sticker,
     Picker
+  },
+  data() {
+    return {
+      selectedIcon: ''
+    }
+  },
+  methods: {
+    selectIcon(name) {
+      this.selectedIcon = name;
+    }
   }
 }
 </script>
