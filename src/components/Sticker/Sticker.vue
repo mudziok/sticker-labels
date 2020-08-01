@@ -51,6 +51,7 @@ export default {
 #text-container {
   width: 200px;  
   border-radius: 0 20px 20px 0; /* TR BR rounded*/
+  overflow: hidden;
 }
 
 .both {
