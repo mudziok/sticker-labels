@@ -44,6 +44,7 @@ export default {
 
 #shadow {
   position: absolute;
+  width: calc(100% - 20px);
   transform: translateY(-24px);
   z-index: -1;
   height: 10px;
