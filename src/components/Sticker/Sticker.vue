@@ -1,7 +1,7 @@
 <template>
   <div id='sticker'>
     <div id='icon-container' class='both'>
-
+      <Icon :name="'mouse'" style="font-size: 55px"/>
     </div>
     <div id='text-container' class='both'>
       <TextInput />
@@ -15,11 +15,13 @@
 
 <script>
 import TextInput from '@/components/Sticker/TextInput.vue'
+import Icon from '@/components/Sticker/Icon.vue'
 
 export default {
   name: 'Sticker',
   components: {
-    TextInput
+    TextInput,
+    Icon
   }
 }
 </script>
@@ -44,12 +46,13 @@ export default {
 }
 
 #icon-container {
-  width: 140px;  
-  border-radius: 50% 0 0 50%; /* TL BL rounded*/
+  width: 100px;  
+  border-radius: 70px 0 0 70px; /* TL BL rounded*/
+  padding-left: 20px;
 }
 
 #text-container {
-  width: 200px;  
+  width: 240px;  
   border-radius: 0 20px 20px 0; /* TR BR rounded*/
   overflow: hidden;
 }
