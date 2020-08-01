@@ -15,7 +15,7 @@
 
 <script>
 import TextInput from '@/components/Sticker/TextInput.vue'
-import Icon from '@/components/Sticker/Icon.vue'
+import Icon from '@/components/Icon.vue'
 
 export default {
   name: 'Sticker',

@@ -2,16 +2,19 @@
   <div id="app">
     <h1>Sticker Creator</h1>
     <Sticker />
+    <Picker />
   </div>
 </template>
 
 <script>
 import Sticker from '@/components/Sticker/Sticker.vue'
+import Picker from '@/components/Picker/Picker.vue'
 
 export default {
   name: 'App',
   components: {
-    Sticker
+    Sticker,
+    Picker
   }
 }
 </script>
