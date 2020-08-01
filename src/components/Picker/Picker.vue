@@ -1,25 +1,21 @@
 <template>
   <div id='picker'>
     <div id="icon-container" class="shape" ref="container">
-      <span style="font-size: 21px; margin: 0 0.5em">ANIMALS</span>
-      <div class="icon">
-        <Icon :name="'mouse'"/>
-      </div>
-      <div class="icon">
-        <Icon :name="'cow'"/>
-      </div>
+      <Category 
+        :name="'Animals'"
+        :icons="['mouse','cow','kangaroo','bear','flamingo','fox','bat','crab','lion']"/>
     </div>
     <div id="shadow" class="shape"></div>
   </div>
 </template>
 
 <script>
-import Icon from '@/components/Icon.vue'
+import Category from '@/components/Picker/Category.vue'
 
 export default {
   name: 'Picker',
   components: {
-    Icon
+    Category
   }
 }
 </script>
