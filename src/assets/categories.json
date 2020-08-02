@@ -1,0 +1,55 @@
+{
+    "entries": [
+        {
+            "name": "Animals",
+            "icons": [
+                "mouse",
+                "cow",
+                "kangaroo",
+                "bear",
+                "flamingo",
+                "fox",
+                "bat",
+                "crab",
+                "lion",
+                "frog",
+                "bee",
+                "koala",
+                "tiger",
+                "rhino",
+                "squirrel",
+                "whale",
+                "duck",
+                "camel",
+                "shark",
+                "bird",
+                "rabbit",
+                "llama"
+            ]
+        },
+        {
+            "name": "Toys",
+            "icons": [
+                "rocking-horse",
+                "bicycle",
+                "water-gun",
+                "rocket",
+                "car",
+                "doll",
+                "monkey",
+                "toy-train"
+            ]
+        },
+        {
+            "name": "Food",
+            "icons": [
+                "pineapple",
+                "apple",
+                "roquefort",
+                "cupcake",
+                "banana",
+                "lollipop"
+            ]
+        }
+    ]
+}

@@ -2,8 +2,10 @@
   <div id='picker'>
     <div id="category-container" class="shape" ref="container">
       <Category 
-        :name="'Animals'"
-        :icons="['mouse','cow','kangaroo','bear','flamingo','fox','bat','crab','lion']"/>
+        v-for="(category, index) in categories.entries"
+        :key="index"
+        :name="category.name"
+        :icons="category.icons" />
     </div>
     <div id="shadow" class="shape"></div>
   </div>
@@ -11,11 +13,17 @@
 
 <script>
 import Category from '@/components/Picker/Category.vue'
+import categories_json from '@/assets/categories.json'
 
 export default {
   name: 'Picker',
   components: {
     Category
+  },
+  data() {
+    return {
+      categories: categories_json
+    }
   }
 }
 </script>

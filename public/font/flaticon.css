@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 01/08/2020 08:54
+  	Creation date: 02/08/2020 19:55
   	*/
 
 @font-face {
@@ -25,7 +25,9 @@
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
   font-family: Flaticon;
+        font-size: 20px;
 font-style: normal;
+margin-left: 20px;
 }
 
 .flaticon-mouse:before { content: "\f100"; }
@@ -50,5 +52,17 @@ font-style: normal;
 .flaticon-bird:before { content: "\f113"; }
 .flaticon-rabbit:before { content: "\f114"; }
 .flaticon-llama:before { content: "\f115"; }
-.flaticon-cat:before { content: "\f116"; }
-.flaticon-hedgehog:before { content: "\f117"; }
+.flaticon-pineapple:before { content: "\f116"; }
+.flaticon-apple:before { content: "\f117"; }
+.flaticon-roquefort:before { content: "\f118"; }
+.flaticon-cupcake:before { content: "\f119"; }
+.flaticon-banana:before { content: "\f11a"; }
+.flaticon-lollipop:before { content: "\f11b"; }
+.flaticon-rocking-horse:before { content: "\f11c"; }
+.flaticon-bicycle:before { content: "\f11d"; }
+.flaticon-water-gun:before { content: "\f11e"; }
+.flaticon-rocket:before { content: "\f11f"; }
+.flaticon-car:before { content: "\f120"; }
+.flaticon-doll:before { content: "\f121"; }
+.flaticon-monkey:before { content: "\f122"; }
+.flaticon-toy-train:before { content: "\f123"; }
