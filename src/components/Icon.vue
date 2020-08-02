@@ -1,5 +1,5 @@
 <template>
-  <i :class='`flaticon-${name}`'></i>
+  <i :class='`flaticon-${name}`' v-if="name !== ''"></i>
 </template>
 
 <script>

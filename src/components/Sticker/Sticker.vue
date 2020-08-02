@@ -1,7 +1,7 @@
 <template>
   <div id='sticker'>
     <div id='icon-container' class='both'>
-      <Icon :name='this.$root.$children[0].selectedIcon' style='font-size: 55px' />
+      <AnimatedIcon :name='name' style='font-size: 55px' />
     </div>
     <div id='text-container' class='both'>
       <TextInput />
@@ -15,13 +15,18 @@
 
 <script>
 import TextInput from '@/components/Sticker/TextInput.vue'
-import Icon from '@/components/Icon.vue'
+import AnimatedIcon from '@/components/Sticker/AnimatedIcon.vue'
 
 export default {
   name: 'Sticker',
   components: {
     TextInput,
-    Icon
+    AnimatedIcon
+  },
+  computed: {
+    name() {
+      return this.$root.$children[0].selectedIcon;
+    }
   }
 }
 </script>

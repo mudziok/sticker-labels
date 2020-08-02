@@ -4,8 +4,7 @@
       <textarea 
         class='font-style'
         v-model='text' 
-        @input='input' 
-        @keypress='input' 
+        @input='input'
         v-bind:style='textareaStyle'
         spellcheck='false'
         ref='textarea' />
@@ -105,6 +104,7 @@ textarea {
   resize: none;
   overflow: hidden;
   transform-origin: center top;
+  outline: none;
 
   color: var(--accent);
   caret-color: var(--accent);
