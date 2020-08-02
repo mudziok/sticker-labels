@@ -1,24 +1,30 @@
 <template>
   <div id="app">
     <h1>Sticker Creator</h1>
-    <Sticker />
+    <Sticker :name='selectedIcon' :isLocked='isLocked'/>
+    <a @click="isLocked = true">
+      <Button style="font-size: 21px">Get this sticker!</Button>
+    </a>
     <Picker />
   </div>
 </template>
 
 <script>
 import Sticker from '@/components/Sticker/Sticker.vue'
+import Button from '@/components/Button.vue'
 import Picker from '@/components/Picker/Picker.vue'
 
 export default {
   name: 'App',
   components: {
     Sticker,
+    Button,
     Picker
   },
   data() {
     return {
-      selectedIcon: ''
+      selectedIcon: '',
+      isLocked: false
     }
   },
   methods: {
@@ -34,6 +40,10 @@ export default {
   --background: #64dbd1;
   --primary: #f0fffc;
   --accent: #2f596d;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {

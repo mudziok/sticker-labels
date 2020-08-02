@@ -6,6 +6,7 @@
     <div id='text-container' class='both'>
       <TextInput />
     </div>
+    <Scissors v-if='isLocked' id='scissors'/>
     <div id='shadow'>
       <div id='icon-container' class='both'></div>
       <div id='text-container' class='both'></div>
@@ -16,16 +17,22 @@
 <script>
 import TextInput from '@/components/Sticker/TextInput.vue'
 import AnimatedIcon from '@/components/Sticker/AnimatedIcon.vue'
+import Scissors from '@/components/Sticker/Scissors.vue'
 
 export default {
   name: 'Sticker',
   components: {
     TextInput,
-    AnimatedIcon
+    AnimatedIcon,
+    Scissors
   },
-  computed: {
-    name() {
-      return this.$root.$children[0].selectedIcon;
+  props: [
+    'name',
+    'isLocked'
+  ],
+  watch: {
+    isLocked() {
+      console.log('change');
     }
   }
 }
@@ -38,6 +45,7 @@ export default {
   align-items: center;
   position: relative;
   
+  margin: 35px;
 }
 
 #shadow {
@@ -47,7 +55,7 @@ export default {
 
   position: absolute;
   transform: translateY(6px);
-  z-index: -1;
+  z-index: -2;
 }
 
 #icon-container {
@@ -74,5 +82,12 @@ export default {
 
 #shadow .both {
   background: var(--accent);
+}
+
+#scissors {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
 }
 </style>

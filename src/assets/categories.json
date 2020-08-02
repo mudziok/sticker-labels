@@ -23,6 +23,7 @@
                 "camel",
                 "shark",
                 "bird",
+                "monkey",
                 "rabbit",
                 "llama"
             ]
@@ -36,7 +37,6 @@
                 "rocket",
                 "car",
                 "doll",
-                "monkey",
                 "toy-train"
             ]
         },
