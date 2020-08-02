@@ -1,6 +1,6 @@
 <template>
   <div id='picker'>
-    <div id="icon-container" class="shape" ref="container">
+    <div id="category-container" class="shape" ref="container">
       <Category 
         :name="'Animals'"
         :icons="['mouse','cow','kangaroo','bear','flamingo','fox','bat','crab','lion']"/>
@@ -24,17 +24,23 @@ export default {
 #picker {
   margin: 35px 0;
   position: relative;
+  width: 100%;
+  max-width: 600px;
 }
 
-#icon-container {
+#category-container {
   color: var(--accent);
   background: var(--primary);
-  padding: 10px;
   font-size: 36px;
 
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+#category-container div:nth-child(2n) {
+  background: #ecfbf8;
 }
 
 .icon {
@@ -54,7 +60,6 @@ export default {
 }
 
 .shape {
-  min-width: 340px; 
   border-radius: 20px;
   overflow: hidden;
 }

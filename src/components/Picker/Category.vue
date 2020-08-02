@@ -1,6 +1,8 @@
 <template>
   <div id='category'>
-    <span style="font-size: 19px; margin: 0 0.5em">{{name.toUpperCase()}}</span>
+    <div class='label'>
+      <span>{{name.toUpperCase()}}</span>
+    </div>
     <div class="icon" v-for="(icon, index) in icons" :key="index">
       <SelectableIcon :name="icon"/>
     </div>
@@ -24,16 +26,23 @@ export default {
 
 <style scoped>
 #category {
-  color: var(--accent);
-  background: var(--primary);
-  padding: 10px;
   font-size: 36px;
-  width: 100%;
+  padding: 10px;
+  width: calc(100% - 20px);
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+}
+
+.label {
+  font-size: 19px;
+  text-align: left;
+  padding-left: 10px;
+  grid-column: 1 / span 2;
 
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .icon {
