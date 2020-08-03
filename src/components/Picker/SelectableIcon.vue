@@ -1,6 +1,6 @@
 <template>
   <a class="selection" @click="choose(name)" :class="this.selected ? 'active' : ''"> 
-      <Icon :name='name'/>
+      <Icon :name='name' class="icon"/>
   </a>
 </template>
 
@@ -46,5 +46,17 @@ export default {
 
 .selection.active {
   background: #c6e9e5;
+}
+
+.icon {
+  transition: transform 0.1s ease-in-out;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.icon:active {
+  transform: scale(1);
 }
 </style>
