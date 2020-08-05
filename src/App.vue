@@ -1,25 +1,30 @@
 <template>
   <div id="app">
     <h1>Sticker Creator</h1>
-    <Sticker :name='selectedIcon' :isLocked='isLocked'/>
-    <a @click="isLocked = true">
-      <Button style="font-size: 21px">Get this sticker!</Button>
-    </a>
+    <div id='hero'>
+      <Display/>
+      <EditableSticker :name='selectedIcon' :isLocked='isLocked'/>
+      <a @click="isLocked = true">
+        <Button style="font-size: 21px">Get this sticker!</Button>
+      </a>
+    </div>
     <Picker />
   </div>
 </template>
 
 <script>
-import Sticker from '@/components/Sticker/Sticker.vue'
+import EditableSticker from '@/components/Sticker/EditableSticker.vue'
 import Button from '@/components/Button.vue'
+import Display from '@/components/Display.vue'
 import Picker from '@/components/Picker/Picker.vue'
 
 export default {
   name: 'App',
   components: {
-    Sticker,
+    EditableSticker,
     Button,
-    Picker
+    Picker,
+    Display
   },
   data() {
     return {
@@ -42,12 +47,21 @@ export default {
   --accent: #2f596d;
 }
 
+#hero {
+  min-width: 430px;
+  min-height: 300.5px;
+
+  position: relative;
+}
+
 a {
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background: var(--background);
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #app {

@@ -1,13 +1,13 @@
 <template>
   <div id='picker'>
-    <div id="category-container" class="shape" ref="container">
+    <div id="category-container" class="shape" ref="container" :class="isCollapsed ? 'collapsed' : ''">
       <Category 
         v-for="(category, index) in categories.entries"
         :key="index"
         :name="category.name"
         :icons="category.icons" />
     </div>
-    <div id="shadow" class="shape"></div>
+    <div id="shadow" class="shape" :class="isCollapsed ? 'collapsed' : ''"></div>
   </div>
 </template>
 
@@ -20,6 +20,9 @@ export default {
   components: {
     Category
   },
+  props: [
+    'isCollapsed'
+  ],
   data() {
     return {
       categories: categories_json
@@ -30,7 +33,6 @@ export default {
 
 <style scoped>
 #picker {
-  margin: 35px 0;
   position: relative;
   width: 100%;
   max-width: 600px;
@@ -58,11 +60,11 @@ export default {
 
 #shadow {
   position: absolute;
-  width: calc(100% - 20px);
-  transform: translateY(-24px);
+  width: 100%;
+  transform: translateY(-14px);
   z-index: -1;
-  height: 10px;
-  padding: 10px;
+  height: 20px;
+  padding: 0;
   border-radius: 0 0 20px 20px;
   background: var(--accent);
 }
@@ -70,5 +72,9 @@ export default {
 .shape {
   border-radius: 20px;
   overflow: hidden;
+  transition: all 1s ease-in-out;
+  transition-delay: 0.2s;
+  max-height: 1000px;
 }
+
 </style>

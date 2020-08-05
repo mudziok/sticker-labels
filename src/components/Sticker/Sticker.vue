@@ -1,12 +1,11 @@
 <template>
-  <div id='sticker'>
+  <div id='sticker' :class="isLocked ? 'isLocked' : ''">
     <div id='icon-container' class='both'>
       <AnimatedIcon :name='name' style='font-size: 55px' />
     </div>
     <div id='text-container' class='both'>
       <TextInput />
     </div>
-    <Scissors v-if='isLocked' id='scissors'/>
     <div id='shadow'>
       <div id='icon-container' class='both'></div>
       <div id='text-container' class='both'></div>
@@ -17,22 +16,17 @@
 <script>
 import TextInput from '@/components/Sticker/TextInput.vue'
 import AnimatedIcon from '@/components/Sticker/AnimatedIcon.vue'
-import Scissors from '@/components/Sticker/Scissors.vue'
 
 export default {
   name: 'Sticker',
   components: {
     TextInput,
-    AnimatedIcon,
-    Scissors
+    AnimatedIcon
   },
-  props: [
-    'name',
-    'isLocked'
-  ],
-  watch: {
-    isLocked() {
-      console.log('change');
+  props: {
+    name,
+    isLocked: {
+      default: true
     }
   }
 }
@@ -43,9 +37,11 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  position: relative;
   
-  margin: 35px;
+}
+
+.isLocked {
+  pointer-events: none;
 }
 
 #shadow {
@@ -82,12 +78,5 @@ export default {
 
 #shadow .both {
   background: var(--accent);
-}
-
-#scissors {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
 }
 </style>
