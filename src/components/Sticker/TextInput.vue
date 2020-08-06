@@ -1,11 +1,11 @@
 <template>
   <div id='container' @click='focusTextInput()' ref='container'>
-    <div id='wrapper' v-bind:style='wrapperStyle'>
+    <div id='wrapper' :style='wrapperStyle'>
       <textarea 
         class='font-style'
-        v-model='text' 
+        v-model='text'
         @input='input'
-        v-bind:style='textareaStyle'
+        :style='textareaStyle'
         spellcheck='false'
         ref='textarea' />
     </div>
@@ -20,59 +20,69 @@ export default {
     return {
       text: '',
       previousText: '',
-      transform: {
-        y: 70,
-        scale: 1
-      },
-      width: 200,
-      height: 140,
+      preloadedHeights: [],
+      minFontSize: 21,
       textareaStyle: {
-        'transform': 'scale(5)',
-        'height' : '28px',
-        'width' : '40px'
+        'height' : '140px',
+        'width' : '240px'
       },
       wrapperStyle: {
-        'height' : '140px',
-        'transfrom' : 'translateY(0px)'
+        'marginTop' : '0px'
       }
     }
   },
   mounted() {
-    this.width = this.$refs.container.clientWidth;
-    this.height = this.$refs.container.clientHeight;
+    window.setTimeout(()=>{ this.preloadHeights(); }, 0); //TODO: this.preloadHeights has to be called after the font loads
   },
   methods: {
-    input() {
-      let size = this.getSizeOfText(this.text);
-
-      if (size.width > this.width - 6) {
-        this.text = this.previousText;
-      }
-      else if (size.height > this.height) {
-        this.text = this.previousText;
-      }
-      else {
-        this.previousText = this.text;
-
-        let scaleY = this.height / size.height;
-        let scaleX = this.width / (size.width + 6);
-        let scale = Math.min(scaleX, scaleY);
-
-        this.textareaStyle.height = `${size.height}px`;
-        this.textareaStyle.width = `${size.width + 6}px`;
-        this.textareaStyle.transform = `scale(${scale})`;
-
-        this.wrapperStyle.height = `${size.height * scale}px`;
-        this.wrapperStyle.transform = `translateY(${(this.height - (size.height * scale)) / 2}px)`;
+    preloadHeights() { //Finds the optimal font sizes for textarea beforehand to optimize the search alter
+      let tests = ['|', '|\n|','|\n|\n|','|\n|\n|\n|','|\n|\n|\n|\n|','|\n|\n|\n|\n|\n|'];
+      let f = 120; //short for font-size
+      let i = 0;
+      while (i < tests.length) { 
+        while(this.getSizeOfText(tests[i], f).height >= 140) {
+          f--;
+        }
+        this.preloadedHeights.push(f);
+        i++; 
       }
     },
-    getSizeOfText(text) { 
+    input() {
+      let minSize = this.getSizeOfText(this.text, this.minFontSize);
+      if (minSize.width <= 200 && minSize.height <= 140 && this.preloadedHeights !== []) {
+        this.previousText = this.text;
+        this.positionText();
+      }
+      else {
+        this.text = this.previousText;
+      }
+    },
+    positionText() { //Finds the optimal font size and margin for textarea and applies it
+      let fyi = 0; //Index for Font-size in the Y axis 
+      while (this.getSizeOfText(this.text, this.preloadedHeights[fyi]).height >= 140) {
+        fyi++;
+      }
+      let fx = this.preloadedHeights[fyi]; //Font-size in the X axis, always smalled than fy
+      while (this.getSizeOfText(this.text, fx).width >= 200) {
+        fx -= 1;
+      }
+      let f = Math.min(fx, this.preloadedHeights[fyi]);
+      this.textareaStyle.fontSize = `${f}px`
+      if (this.text == '') {
+        this.wrapperStyle.marginTop = '0px';
+      }
+      else {
+        let newHeight = this.getSizeOfText(this.text, f).height;
+        this.wrapperStyle.marginTop = `${(140 - newHeight) / 2 }px`;
+      }
+    },
+    getSizeOfText(text, fontSize) { 
       let sampler = this.$refs.sampler;
       sampler.innerText = text.replace(/\n/g, "\n|");
-
+      
+      sampler.style.fontSize = `${fontSize}px`;
       let height = sampler.clientHeight;
       let width = sampler.clientWidth;
-      if (height < 28) { height = 28; }
 
       return {
         'height': height, 
@@ -94,7 +104,8 @@ export default {
 
 #wrapper {
   width: 100%;
-  transition: transform 0.2s ease-in-out;
+  height: 140px;
+  transition: margin-top 0.2s ease-in-out;
 }
 
 textarea {
@@ -111,6 +122,10 @@ textarea {
   background: transparent;
   border: none;
   -webkit-appearance: none;
+  transition: font-size 0.2s ease-in-out;
+  
+  white-space: pre;
+  overflow-wrap: normal;
 }
 
 #sampler { /* Hidden div that allows to calculate size of text in textbox */
@@ -122,8 +137,8 @@ textarea {
 }
 
 .font-style {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  font-size: 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 120px;
   text-align: center;
 }
 </style>
