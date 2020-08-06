@@ -18,8 +18,9 @@ export default {
 
 <style scoped>
 .button {
-  margin: 35px;
+  margin: 35px auto;
   position: relative;
+  width: max-content;
 }
 
 .body {
