@@ -29,13 +29,19 @@ export default {
   data() {
     return {
       selectedIcon: '',
+      text: '',
+      fontSize: 120,
       isLocked: false
     }
   },
   methods: {
     selectIcon(name) {
       this.selectedIcon = name;
-    }
+    },
+    setText(text, fontSize) {
+      this.text = text;
+      this.fontSize = fontSize;
+    },
   }
 }
 </script>

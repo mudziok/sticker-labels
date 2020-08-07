@@ -2,25 +2,31 @@
   <div id='display'>
     <div style="position: relative">
       <img src="../assets/toys.svg" style='z-index: -10; position: relative' alt="Toys with stickers on them"/>
-      <Sticker :name='selectedIcon' class='sticker s1'/>
-      <Sticker :name='selectedIcon' class='sticker s2'/>
-      <Sticker :name='selectedIcon' class='sticker s3'/>
+      <StaticSticker :name='selectedIcon' :text='text' :fontSize='fontSize' class='sticker s1'/>
+      <StaticSticker :name='selectedIcon' :text='text' :fontSize='fontSize' class='sticker s2'/>
+      <StaticSticker :name='selectedIcon' :text='text' :fontSize='fontSize' class='sticker s3'/>
     </div>
   </div>
 </template>
 
 <script>
-import Sticker from '@/components/Sticker/Sticker.vue'
+import StaticSticker from '@/components/Sticker/StaticSticker.vue'
 
 export default {
   name: 'Display',
   components: {
-    Sticker
+    StaticSticker
   },
   computed: {
     selectedIcon() {
       return this.$root.$children[0].selectedIcon;
-    }
+    },
+    text() {
+      return this.$root.$children[0].text;
+    },
+    fontSize() {
+      return this.$root.$children[0].fontSize;
+    },
   }
 }
 </script>

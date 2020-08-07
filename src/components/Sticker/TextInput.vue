@@ -75,6 +75,7 @@ export default {
         let newHeight = this.getSizeOfText(this.text, f).height;
         this.wrapperStyle.marginTop = `${(140 - newHeight) / 2 }px`;
       }
+      this.$root.$children[0].setText(this.text, f);
     },
     getSizeOfText(text, fontSize) { 
       let sampler = this.$refs.sampler;
