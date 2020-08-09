@@ -3,6 +3,7 @@
     <h1>Sticker Creator</h1>
     <div id='hero'>
       <Display/>
+      <img src="./assets/outline.svg" class='background' :class="isLocked ? 'locked' : ''" alt="Sticker outline"/>
       <EditableSticker :name='selectedIcon' :isLocked='isLocked'/>
       <a @click="isLocked = true">
         <Button style="font-size: 21px">Get this sticker!</Button>
@@ -54,20 +55,38 @@ export default {
 }
 
 #hero {
-  min-width: 430px;
-  min-height: 300.5px;
-
+  width: 100%;
+  overflow: hidden;
   position: relative;
+  margin: 10px 0;
 }
 
 a {
   -webkit-tap-highlight-color: transparent;
 }
 
+.background {
+  position: absolute;
+  top: 35px;
+  left: calc(50% - 180px);
+  box-shadow: 0px 0px 0px 1000px var(--background);
+  z-index: -5;
+  transition: all 0.5s ease-in;
+  transform-origin: center;
+  transition-delay: 2.5s;
+}
+
+.background.locked {
+  transform: scale(1.25);
+  opacity: 0;
+}
+
 body {
   background: var(--background);
   overflow-x: hidden;
   overflow-y: scroll;
+  margin: 0;
+  padding: 0;
 }
 
 #app {

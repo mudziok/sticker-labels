@@ -62,7 +62,7 @@ export default {
       while (this.getSizeOfText(this.text, this.preloadedHeights[fyi]).height >= 140) {
         fyi++;
       }
-      let fx = this.preloadedHeights[fyi]; //Font-size in the X axis, always smalled than fy
+      let fx = this.preloadedHeights[fyi]; //Font-size in the X axis, always smaller than fy
       while (this.getSizeOfText(this.text, fx).width >= 200) {
         fx -= 1;
       }

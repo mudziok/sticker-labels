@@ -42,6 +42,9 @@ export default {
   top: 0;
   left: 0;
 
+  z-index: -50;
+  background-color: #89c5ea;
+
   display: flex;
   justify-content: center;
   align-items: center;

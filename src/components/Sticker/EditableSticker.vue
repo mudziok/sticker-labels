@@ -27,7 +27,7 @@ export default {
   watch: {
     isLocked() {
       console.log('change');
-      window.setTimeout(()=>{this.isPreview = true;}, 3000);
+      window.setTimeout(()=>{this.isPreview = true;}, 3200);
     }
   }
 }
@@ -36,7 +36,8 @@ export default {
 <style scoped>
 #container {
   position: relative;
-  margin: 35px;
+  margin: 35px auto;
+  width: max-content;
 }
 
 #scissors {
