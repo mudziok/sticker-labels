@@ -5,8 +5,10 @@
       <Display/>
       <img src="./assets/outline.svg" class='background' :class="isLocked ? 'locked' : ''" alt="Sticker outline"/>
       <EditableSticker :name='selectedIcon' :isLocked='isLocked'/>
-      <a @click="isLocked = true">
-        <Button style="font-size: 21px">Get this sticker!</Button>
+      <a @click="isLocked = true" class='lock-button' :class="isLocked ? 'locked' : ''">
+        <Button style="font-size: 21px">
+          Get this sticker!
+        </Button>
       </a>
     </div>
     <Picker />
@@ -81,6 +83,18 @@ a {
   opacity: 0;
 }
 
+.lock-button {
+  transition: all 0.5s ease-in;
+  transition-delay: 2.5s;
+  display: block;
+}
+
+.lock-button.locked {
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
 body {
   background: var(--background);
   overflow-x: hidden;
@@ -96,7 +110,6 @@ body {
 
   text-align: center;
   color: var(--primary);
-  margin-top: 60px;
 
   display: flex;
   flex-direction: column;

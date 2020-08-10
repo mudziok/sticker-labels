@@ -49,6 +49,12 @@ export default {
 
 .preview {
   transition: transform 0.4s ease-in-out;
-  transform: translate(-52px, 54px) scale(0.1);
+  transform: translate(-46px, 74px) scale(0.125);
+}
+
+@media only screen and (min-width: 600px) {
+  .preview {
+    transform: translate(-58px, 84px) scale(0.1625);
+  }
 }
 </style>
