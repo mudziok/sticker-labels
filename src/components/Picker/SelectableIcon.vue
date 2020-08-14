@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     selected() {
-      return this.$root.$children[0].selectedIcon === this.name ? true : false;
+      return this.$root.$children[0].icon === this.name ? true : false;
     }
   }
 }

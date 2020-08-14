@@ -1,7 +1,7 @@
 <template>
   <div id='sticker' :class="isLocked ? 'isLocked' : ''" ref="sticker">
     <div id='icon-container' class='both'>
-      <AnimatedIcon :name='name' style='font-size: 55px' />
+      <AnimatedIcon :name='icon' style='font-size: 55px' />
     </div>
     <div id='text-container' class='both' :style="`font-size: ${fontSize}px`">
       {{text}}
@@ -22,7 +22,7 @@ export default {
     AnimatedIcon
   },
   props: {
-    name: String,
+    icon: String,
     text: String,
     fontSize: Number,
     isLocked: {

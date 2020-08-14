@@ -1,19 +1,24 @@
 <template>
-  <div id='picker'>
-    <div id="category-container" class="shape" ref="container" :class="isCollapsed ? 'collapsed' : ''">
-      <Category 
-        v-for="(category, index) in categories.entries"
-        :key="index"
-        :name="category.name"
-        :icons="category.icons" />
+  <div id='picker' class='shape'>
+    <div id='columns' :style='columnsStyle'>
+      <div id="category-container" ref="container">
+        <Category 
+          v-for="(category, index) in categories.entries"
+          :key="index"
+          :name="category.name"
+          :icons="category.icons" />
+      </div>
+      <div id="category-container" ref="container">
+        
+      </div>
     </div>
-    <div id="shadow" class="shape" :class="isCollapsed ? 'collapsed' : ''"></div>
+    <div id="shadow" class="shape"></div>
   </div>
 </template>
 
 <script>
 import Category from '@/components/Picker/Category.vue'
-import categories_json from '@/assets/categories.json'
+import CATEGORIES_JSON from '@/assets/categories.json'
 
 export default {
   name: 'Picker',
@@ -21,11 +26,19 @@ export default {
     Category
   },
   props: [
-    'isCollapsed'
+    'appState'
   ],
   data() {
     return {
-      categories: categories_json
+      categories: CATEGORIES_JSON,
+    }
+  },
+  computed: {
+    columnsStyle() {
+      let x = this.appState * 50;
+      return {
+        'transform' : `translateX(-${x}%)`
+      }
     }
   }
 }
@@ -42,6 +55,7 @@ export default {
   color: var(--accent);
   background: var(--primary);
   font-size: 36px;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -51,6 +65,14 @@ export default {
 
 #category-container div:nth-child(2n) {
   background: #ecfbf8;
+}
+
+#columns {
+  width: 200%;
+  display: flex;
+
+  transition: all 1.2s ease-in-out;
+  transition-delay: 2.3s;
 }
 
 .icon {
@@ -72,9 +94,6 @@ export default {
 .shape {
   border-radius: 20px;
   overflow: hidden;
-  transition: all 1s ease-in-out;
-  transition-delay: 0.2s;
-  max-height: 1000px;
 }
 
 </style>

@@ -3,15 +3,24 @@
     <h1>Sticker Creator</h1>
     <div id='hero'>
       <Display/>
-      <img src="./assets/outline.svg" class='background' :class="isLocked ? 'locked' : ''" alt="Sticker outline"/>
-      <EditableSticker :name='selectedIcon' :isLocked='isLocked'/>
-      <a @click="isLocked = true" class='lock-button' :class="isLocked ? 'locked' : ''">
+      <img 
+          src="./assets/outline.svg"
+          alt="Sticker outline"
+          class='background'
+          :class="appState === appStates.DESIGN ? '' : 'locked'" />
+      <EditableSticker 
+          :name='icon' 
+          :isLocked="appState !== appStates.DESIGN" />
+      <a 
+          @click="appState = appStates.PERSONAL_DETAILS" 
+          class='lock-button' 
+          :class="appState === appStates.DESIGN ? '' : 'locked'" >
         <Button style="font-size: 21px">
           Get this sticker!
         </Button>
       </a>
     </div>
-    <Picker />
+    <Picker :appState='appState'/>
   </div>
 </template>
 
@@ -20,6 +29,8 @@ import EditableSticker from '@/components/Sticker/EditableSticker.vue'
 import Button from '@/components/Button.vue'
 import Display from '@/components/Display.vue'
 import Picker from '@/components/Picker/Picker.vue'
+
+import appStates from '@/components/appStates.js'
 
 export default {
   name: 'App',
@@ -31,20 +42,21 @@ export default {
   },
   data() {
     return {
-      selectedIcon: '',
+      icon: '',
       text: '',
       fontSize: 120,
-      isLocked: false
+      appStates: appStates,
+      appState: appStates.DESIGN,
     }
   },
   methods: {
     selectIcon(name) {
-      this.selectedIcon = name;
+      this.icon = name;
     },
     setText(text, fontSize) {
       this.text = text;
       this.fontSize = fontSize;
-    },
+    }
   }
 }
 </script>

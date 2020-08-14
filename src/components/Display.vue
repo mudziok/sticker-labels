@@ -2,9 +2,9 @@
   <div id='display'>
     <div style="position: relative">
       <img src="../assets/toys.svg" class='toys' alt="Toys with stickers on them"/>
-      <StaticSticker :name='selectedIcon' :text='text' :fontSize='fontSize' class='sticker s1'/>
-      <StaticSticker :name='selectedIcon' :text='text' :fontSize='fontSize' class='sticker s2'/>
-      <StaticSticker :name='selectedIcon' :text='text' :fontSize='fontSize' class='sticker s3'/>
+      <StaticSticker :icon='icon' :text='text' :fontSize='fontSize' class='sticker s1'/>
+      <StaticSticker :icon='icon' :text='text' :fontSize='fontSize' class='sticker s2'/>
+      <StaticSticker :icon='icon' :text='text' :fontSize='fontSize' class='sticker s3'/>
     </div>
   </div>
 </template>
@@ -18,8 +18,8 @@ export default {
     StaticSticker
   },
   computed: {
-    selectedIcon() {
-      return this.$root.$children[0].selectedIcon;
+    icon() {
+      return this.$root.$children[0].icon;
     },
     text() {
       return this.$root.$children[0].text;

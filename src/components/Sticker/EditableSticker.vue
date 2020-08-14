@@ -26,8 +26,7 @@ export default {
   },
   watch: {
     isLocked() {
-      console.log('change');
-      window.setTimeout(()=>{this.isPreview = true;}, 3200);
+      window.setTimeout(() => {this.isPreview = true;}, 3200);
     }
   }
 }
